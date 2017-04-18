@@ -1,0 +1,321 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/sequelize/sequelize-auto#readme"
+
+    >sequelize-auto (v0.4.27)</a>
+</h1>
+<h4>Automatically generate bare sequelize models from your database.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sequelize-auto">module sequelize-auto</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.sequelize-auto">
+            function <span class="apidocSignatureSpan"></span>sequelize-auto
+            <span class="apidocSignatureSpan">(database, username, password, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.toString">
+            function <span class="apidocSignatureSpan">sequelize-auto.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sequelize-auto.</span>sql_string</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sequelize-auto.sql_string">module sequelize-auto.sql_string</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.sql_string.escape">
+            function <span class="apidocSignatureSpan">sequelize-auto.sql_string.</span>escape
+            <span class="apidocSignatureSpan">(val, timeZone, dialect, format)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.sql_string.format">
+            function <span class="apidocSignatureSpan">sequelize-auto.sql_string.</span>format
+            <span class="apidocSignatureSpan">(sql, values, timeZone, dialect)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.sql_string.formatNamedParameters">
+            function <span class="apidocSignatureSpan">sequelize-auto.sql_string.</span>formatNamedParameters
+            <span class="apidocSignatureSpan">(sql, values, timeZone, dialect)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sequelize-auto" id="apidoc.module.sequelize-auto">module sequelize-auto</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sequelize-auto.sequelize-auto" id="apidoc.element.sequelize-auto.sequelize-auto">
+        function <span class="apidocSignatureSpan"></span>sequelize-auto
+        <span class="apidocSignatureSpan">(database, username, password, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function AutoSequelize(database, username, password, options) {
+  if (options &#x26;&#x26; options.dialect === &#x27;sqlite&#x27; &#x26;&#x26; ! options.storage)
+    options.storage = database;
+
+  if (database instanceof Sequelize) {
+    this.sequelize = database;
+  } else {
+    this.sequelize = new Sequelize(database, username, password, options || {});
+  }
+
+  this.queryInterface = this.sequelize.getQueryInterface();
+  this.tables = {};
+  this.foreignKeys = {};
+  this.dialect = dialects[this.sequelize.options.dialect];
+
+  this.options = _.extend({
+    global: &#x27;Sequelize&#x27;,
+    local: &#x27;sequelize&#x27;,
+    spaces: false,
+    indentation: 1,
+    directory: &#x27;./models&#x27;,
+    additional: {},
+    freezeTableName: true
+  }, options || {});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sequelize-auto.toString" id="apidoc.element.sequelize-auto.toString">
+        function <span class="apidocSignatureSpan">sequelize-auto.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sequelize-auto.sql_string" id="apidoc.module.sequelize-auto.sql_string">module sequelize-auto.sql_string</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sequelize-auto.sql_string.escape" id="apidoc.element.sequelize-auto.sql_string.escape">
+        function <span class="apidocSignatureSpan">sequelize-auto.sql_string.</span>escape
+        <span class="apidocSignatureSpan">(val, timeZone, dialect, format)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escape(val, timeZone, dialect, format) {
+  var prependN = false;
+  if (val === undefined || val === null) {
+    return &#x27;NULL&#x27;;
+  }
+  switch (typeof val) {
+    case &#x27;boolean&#x27;:
+    // SQLite doesn&#x27;t have true/false support. MySQL aliases true/false to 1/0
+    // for us. Postgres actually has a boolean type with true/false literals,
+    // but sequelize doesn&#x27;t use it yet.
+      if (dialect === &#x27;sqlite&#x27; || dialect === &#x27;mssql&#x27;) {
+        return +!!val;
+      }
+      return &#x27;&#x27; + !!val;
+    case &#x27;number&#x27;:
+      return val + &#x27;&#x27;;
+    case &#x27;string&#x27;:
+    // In mssql, prepend N to all quoted vals which are originally a string (for
+    // unicode compatibility)
+      prependN = dialect === &#x27;mssql&#x27;;
+      break;
+  }
+
+  if (val instanceof Date) {
+    val = dataTypes[dialect].DATE.prototype.stringify(val, { timezone: timeZone });
+  }
+
+  if (Buffer.isBuffer(val)) {
+    if (dataTypes[dialect].BLOB) {
+      return dataTypes[dialect].BLOB.prototype.stringify(val);
+    }
+
+    return dataTypes.BLOB.prototype.stringify(val);
+  }
+
+  if (Array.isArray(val)) {
+    var partialEscape = _.partial(escape, _, timeZone, dialect, format);
+    if (dialect === &#x27;postgres&#x27; &#x26;&#x26; !format) {
+      return dataTypes.ARRAY.prototype.stringify(val, {escape: escape});
+    }
+    return val.map(partialEscape);
+  }
+
+  if (!val.replace) {
+    throw new Error(&#x27;Invalid value &#x27; + val);
+  }
+
+  if (dialect === &#x27;postgres&#x27; || dialect === &#x27;sqlite&#x27; || dialect === &#x27;mssql&#x27;) {
+    // http://www.postgresql.org/docs/8.2/static/sql-syntax-lexical.html#SQL-SYNTAX-STRINGS
+    // http://stackoverflow.com/q/603572/130598
+    val = val.replace(/&#x27;/g, &#x22;&#x27;&#x27;&#x22;);
+  } else {
+    val = val.replace(/[\0\n\r\b\t\\\&#x27;\&#x22;\x1a]/g, function(s) {
+      switch (s) {
+        case &#x27;\0&#x27;: return &#x27;\\0&#x27;;
+        case &#x27;\n&#x27;: return &#x27;\\n&#x27;;
+        case &#x27;\r&#x27;: return &#x27;\\r&#x27;;
+        case &#x27;\b&#x27;: return &#x27;\\b&#x27;;
+        case &#x27;\t&#x27;: return &#x27;\\t&#x27;;
+        case &#x27;\x1a&#x27;: return &#x27;\\Z&#x27;;
+        default: return &#x27;\\&#x27; + s;
+      }
+    });
+  }
+  return (prependN ? &#x22;N&#x27;&#x22; : &#x22;&#x27;&#x22;) + val + &#x22;&#x27;&#x22;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sequelize-auto.sql_string.format" id="apidoc.element.sequelize-auto.sql_string.format">
+        function <span class="apidocSignatureSpan">sequelize-auto.sql_string.</span>format
+        <span class="apidocSignatureSpan">(sql, values, timeZone, dialect)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function format(sql, values, timeZone, dialect) {
+  values = [].concat(values);
+
+  if (typeof sql !== &#x27;string&#x27;) {
+    throw new Error(&#x27;Invalid SQL string provided: &#x27; + sql);
+  }
+  return sql.replace(/\?/g, function(match) {
+    if (!values.length) {
+      return match;
+    }
+
+    return escape(values.shift(), timeZone, dialect, true);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sequelize-auto.sql_string.formatNamedParameters" id="apidoc.element.sequelize-auto.sql_string.formatNamedParameters">
+        function <span class="apidocSignatureSpan">sequelize-auto.sql_string.</span>formatNamedParameters
+        <span class="apidocSignatureSpan">(sql, values, timeZone, dialect)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatNamedParameters(sql, values, timeZone, dialect) {
+  return sql.replace(/\:+(?!\d)(\w+)/g, function(value, key) {
+    if (&#x27;postgres&#x27; === dialect &#x26;&#x26; &#x27;::&#x27; === value.slice(0, 2)) {
+      return value;
+    }
+
+    if (values[key] !== undefined) {
+      return escape(values[key], timeZone, dialect, true);
+    } else {
+      throw new Error(&#x27;Named parameter &#x22;&#x27; + value + &#x27;&#x22; has no value in the given object.&#x27;);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
