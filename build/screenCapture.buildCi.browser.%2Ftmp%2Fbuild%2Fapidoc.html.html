@@ -47,7 +47,7 @@
 }
 </style>
 <h1>api documentation for
-    <a href="https://github.com/sequelize/sequelize-auto#readme">sequelize-auto (v0.4.27)</a>
+    <a href="https://github.com/sequelize/sequelize-auto#readme">sequelize-auto (v0.4.28)</a>
 </h1>
 <h4>Automatically generate bare sequelize models from your database.</h4>
 <div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
@@ -59,15 +59,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.sequelize-auto">
             function <span class="apidocSignatureSpan"></span>sequelize-auto
             <span class="apidocSignatureSpan">(database, username, password, options)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.toString">
-            function <span class="apidocSignatureSpan">sequelize-auto.</span>toString
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -154,21 +145,6 @@
 
 
 
-    <h2>
-        <a href="#apidoc.element.sequelize-auto.toString" id="apidoc.element.sequelize-auto.toString">
-        function <span class="apidocSignatureSpan">sequelize-auto.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
 
 </div>
 
@@ -249,7 +225,24 @@
   }
   return (prependN ? "N'" : "'") + val + "'";
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      val_text = quoteWrapper + val_text + quoteWrapper
+    }
+  }
+
+  if(defaultVal === null || defaultVal === undefined) {
+    return true;
+  } else {
+    val_text = _.isString(val_text) &amp;&amp; !val_text.match(/^sequelize\.[^(]+\(.*\)$/) ? SqlString.<span class="apidocCodeKeywordSpan
+">escape</span>(_.trim(val_text, '"'), null, self.options.dialect) : val_text;
+
+    // don't prepend N for MSSQL when building models...
+    val_text = _.trimStart(val_text, 'N')
+    text[table] += spaces + spaces + spaces + attr + ": " + val_text;
+  }
+}
+else if (attr === "type" &amp;&amp; self.tables[table][field][attr].indexOf('ENUM') === 0) {
+...</pre></li>
     </ul>
 
 

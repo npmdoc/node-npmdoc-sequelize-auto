@@ -51,7 +51,7 @@
 
         href="https://github.com/sequelize/sequelize-auto#readme"
 
-    >sequelize-auto (v0.4.27)</a>
+    >sequelize-auto (v0.4.28)</a>
 </h1>
 <h4>Automatically generate bare sequelize models from your database.</h4>
 <div class="apidocSectionDiv"><a
@@ -66,15 +66,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.sequelize-auto">
             function <span class="apidocSignatureSpan"></span>sequelize-auto
             <span class="apidocSignatureSpan">(database, username, password, options)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.sequelize-auto.toString">
-            function <span class="apidocSignatureSpan">sequelize-auto.</span>toString
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -161,21 +152,6 @@
 
 
 
-    <h2>
-        <a href="#apidoc.element.sequelize-auto.toString" id="apidoc.element.sequelize-auto.toString">
-        function <span class="apidocSignatureSpan">sequelize-auto.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
 
 </div>
 
@@ -256,7 +232,24 @@
   }
   return (prependN ? &#x22;N&#x27;&#x22; : &#x22;&#x27;&#x22;) + val + &#x22;&#x27;&#x22;;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      val_text = quoteWrapper + val_text + quoteWrapper
+    }
+  }
+
+  if(defaultVal === null || defaultVal === undefined) {
+    return true;
+  } else {
+    val_text = _.isString(val_text) &#x26;&#x26; !val_text.match(/^sequelize\.[^(]+\(.*\)$/) ? SqlString.<span class="apidocCodeKeywordSpan
+">escape</span>(_.trim(val_text, &#x27;&#x22;&#x27;), null, self.options.dialect) : val_text;
+
+    // don&#x27;t prepend N for MSSQL when building models...
+    val_text = _.trimStart(val_text, &#x27;N&#x27;)
+    text[table] += spaces + spaces + spaces + attr + &#x22;: &#x22; + val_text;
+  }
+}
+else if (attr === &#x22;type&#x22; &#x26;&#x26; self.tables[table][field][attr].indexOf(&#x27;ENUM&#x27;) === 0) {
+...</pre></li>
     </ul>
 
 
