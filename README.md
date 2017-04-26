@@ -1,6 +1,6 @@
 # npmdoc-sequelize-auto
 
-#### api documentation for  [sequelize-auto (v0.4.27)](https://github.com/sequelize/sequelize-auto#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sequelize-auto.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sequelize-auto) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sequelize-auto.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sequelize-auto)
+#### basic api documentation for  [sequelize-auto (v0.4.28)](https://github.com/sequelize/sequelize-auto#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sequelize-auto.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sequelize-auto) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sequelize-auto.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sequelize-auto)
 
 #### Automatically generate bare sequelize models from your database.
 
@@ -54,13 +54,13 @@
     },
     "directories": {},
     "dist": {
-        "shasum": "4853832419d69ac9c74b31be1e6eaeff6892b2d0",
-        "tarball": "https://registry.npmjs.org/sequelize-auto/-/sequelize-auto-0.4.27.tgz"
+        "shasum": "9102048a9e37aec30c434d1c75556f7aed10f6f1",
+        "tarball": "https://registry.npmjs.org/sequelize-auto/-/sequelize-auto-0.4.28.tgz"
     },
     "engines": {
         "node": ">=0.10"
     },
-    "gitHead": "3ff48524564930be54e1cc3adea328f891daa792",
+    "gitHead": "863441e27ead2dc5a2184a1ac70617a215464fce",
     "homepage": "https://github.com/sequelize/sequelize-auto#readme",
     "keywords": [
         "mysql",
@@ -104,7 +104,7 @@
         "test-postgres": "cross-env DIALECT=postgres npm run test",
         "test-sqlite": "cross-env DIALECT=sqlite npm run test"
     },
-    "version": "0.4.27"
+    "version": "0.4.28"
 }
 ```
 
